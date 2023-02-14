@@ -9,6 +9,9 @@ class Comparer {
   get incidents(): number[] {
     return this.newIncidents
   }
+  get currentStash(): number[] {
+    return this.stash
+  }
 }
 
 export default Comparer
