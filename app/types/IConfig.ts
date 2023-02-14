@@ -1,6 +1,6 @@
 export interface IConfigTelegram {
   token: string
-  receivers: number[]
+  receivers: string[]
 }
 export interface IConfig {
   siem_host: string

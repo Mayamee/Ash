@@ -2,7 +2,7 @@
 class Poller {
   private pollList: NodeJS.Timer[] = []
   createPoll(interval: number, callback: () => void): void {
-		callback()
+    callback()
     const poll = setInterval(callback, interval)
     this.pollList.push(poll)
   }
