@@ -1,0 +1,8 @@
+---
+siem_host: "rusiem.dev"
+siem_api_token: "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+telegram:
+  token: "123456789:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
+  receivers:
+    - 123456789
+    - 987654321

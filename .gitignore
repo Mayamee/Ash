@@ -1,0 +1,4 @@
+_help
+node_modules
+dist
+app/config.yml
