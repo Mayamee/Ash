@@ -15,14 +15,14 @@ class Grabber {
     })
     this.response = await response.json()
   }
+  getIncidentById(id: number): IIncidentInfo | null {
+    return this.response.data.find((incident) => incident.id === id) || null
+  }
   get ids(): number[] {
     return this.response.data.map((incident: IIncidentInfo) => incident.id)
   }
   get data(): IIncidentInfo[] {
     return this.response.data
-  }
-  getIncidentById(id: number): IIncidentInfo | null {
-    return this.response.data.find((incident) => incident.id === id) || null
   }
 }
 

@@ -20,10 +20,11 @@ const main = async () => {
   if (comparer2366.incidents.length > 0) {
     console.log('Current stash: ', comparer2366.currentStash)
     for (const incidentId of comparer2366.incidents) {
+      //TODO separate assigned, reopen, in_work within comparer logic
       const incident = grabber2366.getIncidentById(incidentId)
-      if (incident) {
-        await alerter2366.alert(buildTelegramMessage(incident))
-        // console.log(`New incident: ${incident.name}`)
+      if (incident && incident.status === 'assigned') {
+        // await alerter2366.alert(buildTelegramMessage(incident))
+        console.log(`New incident: ${incident.status}`)
       }
     }
   } else {

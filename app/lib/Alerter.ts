@@ -1,6 +1,7 @@
 //#-Оповещает-#//
 import TelegramBot from 'node-telegram-bot-api'
 class Alerter {
+  //TODO: create queue and listener for sending messages
   private bot: TelegramBot
   constructor(token: string, private receivers: string[]) {
     this.bot = new TelegramBot(token, { polling: false })
