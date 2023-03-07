@@ -1,12 +1,12 @@
 import yaml from 'yaml'
 import path from 'path'
 import fs from 'fs'
-import Poller from './lib/Poller'
+import Poller from './core/Poller'
 import { IConfig } from './types/IConfig'
-import Grabber from './lib/Grabber'
-import Comparer from './lib/Comparer'
-import Alerter from './lib/Alerter'
-import { buildTelegramMessage } from './lib/BuildTelegramMessage'
+import Grabber from './core/Grabber'
+import Comparer from './core/Comparer'
+import Alerter from './core/Alerter'
+import { buildTelegramMessage } from './core/BuildTelegramMessage'
 const config2366 = yaml.parse(
   fs.readFileSync(path.join(__dirname, 'config.yml'), 'utf8')
 ) as IConfig
@@ -23,13 +23,13 @@ const main = async () => {
       //TODO separate assigned, reopen, in_work within comparer logic
       const incident = grabber2366.getIncidentById(incidentId)
       if (incident && incident.status === 'assigned') {
-        // await alerter2366.alert(buildTelegramMessage(incident))
-        console.log(`New incident: ${incident.status}`)
+        await alerter2366.alert(buildTelegramMessage(incident, config2366.siem_host))
+        // console.log(buildTelegramMessage(incident, config2366.siem_host))
       }
     }
   } else {
     console.log('No new incidents...nothing to do')
-    console.log('Current stash: ', comparer2366.currentStash)
+    console.log('Current stash: ', JSON.stringify(comparer2366.currentStash))
   }
 }
 
